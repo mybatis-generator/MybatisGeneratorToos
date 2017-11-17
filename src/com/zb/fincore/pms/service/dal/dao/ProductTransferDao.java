@@ -1,21 +1,20 @@
 /*
- * CreditTransferDetailDAO.java
+ * ProductTransferDao.java
  * Copyright (c) 2017, 资邦金服（上海）网络科技有限公司. All Rights Reserved 
- * 2017-08-02 20:21:42
+ * 2017-11-17 13:35:02
  */
-package com.zb.payment.trade.dal.dao;
+package com.zb.fincore.pms.service.dal.dao;
 
-import com.zb.payment.trade.dal.model.CreditTransferDetailEntity;
-import com.zb.payment.trade.dal.model.CreditTransferDetailKey;
+import com.zb.fincore.pms.service.dal.model.ProductTransfer;
 
-public interface CreditTransferDetailDAO {
+public interface ProductTransferDao {
     /**
      * @MethodName deleteByPrimaryKey
      * @Description 
-     * @param key
+     * @param id
      * @return int
      */
-    int deleteByPrimaryKey(CreditTransferDetailKey key);
+    int deleteByPrimaryKey(Long id);
 
     /**
      * @MethodName insert
@@ -23,7 +22,7 @@ public interface CreditTransferDetailDAO {
      * @param record
      * @return int
      */
-    int insert(CreditTransferDetailEntity record);
+    int insert(ProductTransfer record);
 
     /**
      * @MethodName insertSelective
@@ -31,15 +30,15 @@ public interface CreditTransferDetailDAO {
      * @param record
      * @return int
      */
-    int insertSelective(CreditTransferDetailEntity record);
+    int insertSelective(ProductTransfer record);
 
     /**
      * @MethodName selectByPrimaryKey
      * @Description 
-     * @param key
-     * @return CreditTransferDetailEntity
+     * @param id
+     * @return ProductTransfer
      */
-    CreditTransferDetailEntity selectByPrimaryKey(CreditTransferDetailKey key);
+    ProductTransfer selectByPrimaryKey(Long id);
 
     /**
      * @MethodName updateByPrimaryKeySelective
@@ -47,7 +46,7 @@ public interface CreditTransferDetailDAO {
      * @param record
      * @return int
      */
-    int updateByPrimaryKeySelective(CreditTransferDetailEntity record);
+    int updateByPrimaryKeySelective(ProductTransfer record);
 
     /**
      * @MethodName updateByPrimaryKey
@@ -55,5 +54,5 @@ public interface CreditTransferDetailDAO {
      * @param record
      * @return int
      */
-    int updateByPrimaryKey(CreditTransferDetailEntity record);
+    int updateByPrimaryKey(ProductTransfer record);
 }
