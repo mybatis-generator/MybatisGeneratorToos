@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>  
+<!DOCTYPE generatorConfiguration  
+ PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"  
+ "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">  
+<generatorConfiguration>
+
+   <!-- 引入配置文件 -->  
+   <properties resource="init.properties"/>
+   
+   <!-- 数据库驱动 -->
+   <classPathEntry  location="${ecomhouserent_classPath}"/>  
+   
+   <context id="mysqlTables"  targetRuntime="MyBatis3">  
+   		<!-- 注释 -->
+        <commentGenerator>  
+            <!-- 是否去除自动生成的注释 true：是 , false:否 -->
+            <property name="suppressAllComments" value="false"/>  
+            <!-- 是否生成注释代时间戳 -->
+            <property name="suppressDate" value="false"/>  
+        </commentGenerator>  
+        
+      	<!-- jdbc连接 -->
+		<jdbcConnection
+			driverClass="${ecomhouserent_driver_class}"
+			connectionURL="${ecomhouserent_jdbc_url}"
+			userId="${ecomhouserent_jdbc_user}"
+			password="${ecomhouserent_jdbc_password}">  
+        </jdbcConnection>  
+        
+        <javaTypeResolver>  
+            <property name="forceBigDecimals" value="false"/>  
+        </javaTypeResolver>  
+     	
+     	<!-- model配置 -->
+        <javaModelGenerator targetPackage="com.qk365.coupons.entity.oa" targetProject="${ecomhouserent_project}">  
+            <property name="enableSubPackages" value="true"/>  
+            <property name="trimStrings" value="true"/>  
+        </javaModelGenerator>  
+        
+        <!-- mapping配置 -->
+        <sqlMapGenerator targetPackage="com.qk365.coupons.mapping.oa" targetProject="${ecomhouserent_project}">  
+            <property name="enableSubPackages" value="true"/>  
+        </sqlMapGenerator>  
+         
+        <!-- dao配置 -->
+        <javaClientGenerator type="XMLMAPPER" targetPackage="com.qk365.coupons.dao.oa" targetProject="${ecomhouserent_project}">  
+            <property name="enableSubPackages" value="true"/>  
+        </javaClientGenerator>  
+        
+    	<!-- OA库 -->
+    	<!-- 
+    	<table tableName="Bill_Manage" domainObjectName="BillManage" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false">
+    	</table>
+    	<table tableName="Petty_Expenses" domainObjectName="PettyExpenses" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false">
+    	</table>
+    	<table tableName="Coupons_Activities" domainObjectName="CouponsActivities" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false">
+    		<columnOverride column="ca_rules" javaType="java.lang.String" jdbcType="VARCHAR" />
+    	</table> -->
+    	<table tableName="coupons_repair_log" domainObjectName="CouponsRepairLog" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false">
+    	</table>
+    	
+    </context>  
+</generatorConfiguration>  

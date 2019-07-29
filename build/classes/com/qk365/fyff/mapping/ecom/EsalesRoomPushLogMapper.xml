@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.qk365.fyff.dao.ecom.EsalesRoomPushLogDao" >
+
+    <resultMap id="BaseResultMap" type="com.qk365.fyff.entity.ecom.EsalesRoomPushLog" >
+        <id column="id" property="id" jdbcType="INTEGER" />
+        <result column="push_rco_id" property="pushRcoId" jdbcType="INTEGER" />
+        <result column="room_id" property="roomId" jdbcType="INTEGER" />
+        <result column="cell_id" property="cellId" jdbcType="INTEGER" />
+        <result column="type" property="type" jdbcType="INTEGER" />
+        <result column="request_param" property="requestParam" jdbcType="VARCHAR" />
+        <result column="response_param" property="responseParam" jdbcType="VARCHAR" />
+        <result column="status" property="status" jdbcType="VARCHAR" />
+        <result column="retry_flag" property="retryFlag" jdbcType="VARCHAR" />
+        <result column="retry_count" property="retryCount" jdbcType="INTEGER" />
+        <result column="api_url" property="apiUrl" jdbcType="VARCHAR" />
+        <result column="api_no" property="apiNo" jdbcType="VARCHAR" />
+        <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    </resultMap>
+
+    <sql id="Base_Column_List" >
+        id, push_rco_id, room_id, cell_id, type, request_param, response_param, status, retry_flag, 
+        retry_count, api_url, api_no, create_time
+    </sql>
+
+    <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+        select 
+        <include refid="Base_Column_List" />
+        from esales_room_push_log
+        where id = #{id,jdbcType=INTEGER}
+    </select>
+
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+        delete from esales_room_push_log
+        where id = #{id,jdbcType=INTEGER}
+    </delete>
+
+    <insert id="insertSelective" parameterType="com.qk365.fyff.entity.ecom.EsalesRoomPushLog" >
+        insert into esales_room_push_log
+        <trim prefix="(" suffix=")" suffixOverrides="," >
+            <if test="id != null" >
+                id,
+            </if>
+            <if test="pushRcoId != null" >
+                push_rco_id,
+            </if>
+            <if test="roomId != null" >
+                room_id,
+            </if>
+            <if test="cellId != null" >
+                cell_id,
+            </if>
+            <if test="type != null" >
+                type,
+            </if>
+            <if test="requestParam != null" >
+                request_param,
+            </if>
+            <if test="responseParam != null" >
+                response_param,
+            </if>
+            <if test="status != null" >
+                status,
+            </if>
+            <if test="retryFlag != null" >
+                retry_flag,
+            </if>
+            <if test="retryCount != null" >
+                retry_count,
+            </if>
+            <if test="apiUrl != null" >
+                api_url,
+            </if>
+            <if test="apiNo != null" >
+                api_no,
+            </if>
+            <if test="createTime != null" >
+                create_time,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides="," >
+            <if test="id != null" >
+                #{id,jdbcType=INTEGER},
+            </if>
+            <if test="pushRcoId != null" >
+                #{pushRcoId,jdbcType=INTEGER},
+            </if>
+            <if test="roomId != null" >
+                #{roomId,jdbcType=INTEGER},
+            </if>
+            <if test="cellId != null" >
+                #{cellId,jdbcType=INTEGER},
+            </if>
+            <if test="type != null" >
+                #{type,jdbcType=INTEGER},
+            </if>
+            <if test="requestParam != null" >
+                #{requestParam,jdbcType=VARCHAR},
+            </if>
+            <if test="responseParam != null" >
+                #{responseParam,jdbcType=VARCHAR},
+            </if>
+            <if test="status != null" >
+                #{status,jdbcType=VARCHAR},
+            </if>
+            <if test="retryFlag != null" >
+                #{retryFlag,jdbcType=VARCHAR},
+            </if>
+            <if test="retryCount != null" >
+                #{retryCount,jdbcType=INTEGER},
+            </if>
+            <if test="apiUrl != null" >
+                #{apiUrl,jdbcType=VARCHAR},
+            </if>
+            <if test="apiNo != null" >
+                #{apiNo,jdbcType=VARCHAR},
+            </if>
+            <if test="createTime != null" >
+                #{createTime,jdbcType=TIMESTAMP},
+            </if>
+        </trim>
+    </insert>
+
+    <update id="updateByPrimaryKeySelective" parameterType="com.qk365.fyff.entity.ecom.EsalesRoomPushLog" >
+        update esales_room_push_log
+        <set >
+            <if test="pushRcoId != null" >
+                push_rco_id = #{pushRcoId,jdbcType=INTEGER},
+            </if>
+            <if test="roomId != null" >
+                room_id = #{roomId,jdbcType=INTEGER},
+            </if>
+            <if test="cellId != null" >
+                cell_id = #{cellId,jdbcType=INTEGER},
+            </if>
+            <if test="type != null" >
+                type = #{type,jdbcType=INTEGER},
+            </if>
+            <if test="requestParam != null" >
+                request_param = #{requestParam,jdbcType=VARCHAR},
+            </if>
+            <if test="responseParam != null" >
+                response_param = #{responseParam,jdbcType=VARCHAR},
+            </if>
+            <if test="status != null" >
+                status = #{status,jdbcType=VARCHAR},
+            </if>
+            <if test="retryFlag != null" >
+                retry_flag = #{retryFlag,jdbcType=VARCHAR},
+            </if>
+            <if test="retryCount != null" >
+                retry_count = #{retryCount,jdbcType=INTEGER},
+            </if>
+            <if test="apiUrl != null" >
+                api_url = #{apiUrl,jdbcType=VARCHAR},
+            </if>
+            <if test="apiNo != null" >
+                api_no = #{apiNo,jdbcType=VARCHAR},
+            </if>
+            <if test="createTime != null" >
+                create_time = #{createTime,jdbcType=TIMESTAMP},
+            </if>
+        </set>
+        where id = #{id,jdbcType=INTEGER}
+    </update>
+</mapper>

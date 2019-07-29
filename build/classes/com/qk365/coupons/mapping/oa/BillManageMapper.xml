@@ -1,0 +1,380 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.qk365.coupons.dao.oa.BillManageDao" >
+
+    <resultMap id="BaseResultMap" type="com.qk365.coupons.entity.oa.BillManage" >
+        <id column="BIM_Id" property="bimId" jdbcType="INTEGER" />
+        <result column="BIM_Start_Time" property="bimStartTime" jdbcType="TIMESTAMP" />
+        <result column="BIM_End_Time" property="bimEndTime" jdbcType="TIMESTAMP" />
+        <result column="BIM_Last_pay_Time" property="bimLastPayTime" jdbcType="TIMESTAMP" />
+        <result column="BIM_Rent" property="bimRent" jdbcType="DECIMAL" />
+        <result column="BIM_Deposit_RMB" property="bimDepositRmb" jdbcType="DECIMAL" />
+        <result column="BIM_Delay_Pay" property="bimDelayPay" jdbcType="DECIMAL" />
+        <result column="BIM_Pay_Time" property="bimPayTime" jdbcType="TIMESTAMP" />
+        <result column="BIM_Mark" property="bimMark" jdbcType="VARCHAR" />
+        <result column="BIM_Create_Time" property="bimCreateTime" jdbcType="TIMESTAMP" />
+        <result column="BIM_State" property="bimState" jdbcType="INTEGER" />
+        <result column="BIM_No" property="bimNo" jdbcType="VARCHAR" />
+        <result column="BIM_ROM_Id" property="bimRomId" jdbcType="INTEGER" />
+        <result column="BIM_CO_Id" property="bimCoId" jdbcType="INTEGER" />
+        <result column="BIM_CUT_Id" property="bimCutId" jdbcType="INTEGER" />
+        <result column="BIM_Water_RMB" property="bimWaterRmb" jdbcType="DECIMAL" />
+        <result column="BIM_Energy_RMB" property="bimEnergyRmb" jdbcType="DECIMAL" />
+        <result column="BIM_Upkeep_RMB" property="bimUpkeepRmb" jdbcType="DECIMAL" />
+        <result column="BIM_Expens_RMB" property="bimExpensRmb" jdbcType="DECIMAL" />
+        <result column="BIM_Intermediary_Fee" property="bimIntermediaryFee" jdbcType="DECIMAL" />
+        <result column="BIM_Lan_Fee" property="bimLanFee" jdbcType="DECIMAL" />
+        <result column="BIM_CableTV_Fee" property="bimCabletvFee" jdbcType="DECIMAL" />
+        <result column="BIM_EmergenCard_Fee" property="bimEmergencardFee" jdbcType="DECIMAL" />
+        <result column="BIM_UPCard_Fee" property="bimUpcardFee" jdbcType="DECIMAL" />
+        <result column="BIM_Total_RMB" property="bimTotalRmb" jdbcType="DECIMAL" />
+        <result column="BIM_SysUse" property="bimSysuse" jdbcType="VARCHAR" />
+        <result column="BIM_Check_Overdue" property="bimCheckOverdue" jdbcType="INTEGER" />
+        <result column="BIM_Check" property="bimCheck" jdbcType="INTEGER" />
+        <result column="BIM_Check_US_Name" property="bimCheckUsName" jdbcType="VARCHAR" />
+        <result column="BIM_Check_Date" property="bimCheckDate" jdbcType="TIMESTAMP" />
+        <result column="BIM_Type" property="bimType" jdbcType="INTEGER" />
+        <result column="bim_Pay_ToBank" property="bimPayTobank" jdbcType="INTEGER" />
+        <result column="ts" property="ts" jdbcType="BIGINT" />
+        <result column="bim_realPayToBank" property="bimRealpaytobank" jdbcType="INTEGER" />
+    </resultMap>
+
+    <sql id="Base_Column_List" >
+        BIM_Id, BIM_Start_Time, BIM_End_Time, BIM_Last_pay_Time, BIM_Rent, BIM_Deposit_RMB, 
+        BIM_Delay_Pay, BIM_Pay_Time, BIM_Mark, BIM_Create_Time, BIM_State, BIM_No, BIM_ROM_Id, 
+        BIM_CO_Id, BIM_CUT_Id, BIM_Water_RMB, BIM_Energy_RMB, BIM_Upkeep_RMB, BIM_Expens_RMB, 
+        BIM_Intermediary_Fee, BIM_Lan_Fee, BIM_CableTV_Fee, BIM_EmergenCard_Fee, BIM_UPCard_Fee, 
+        BIM_Total_RMB, BIM_SysUse, BIM_Check_Overdue, BIM_Check, BIM_Check_US_Name, BIM_Check_Date, 
+        BIM_Type, bim_Pay_ToBank, ts, bim_realPayToBank
+    </sql>
+
+    <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+        select 
+        <include refid="Base_Column_List" />
+        from Bill_Manage
+        where BIM_Id = #{bimId,jdbcType=INTEGER}
+    </select>
+
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+        delete from Bill_Manage
+        where BIM_Id = #{bimId,jdbcType=INTEGER}
+    </delete>
+
+    <insert id="insertSelective" parameterType="com.qk365.coupons.entity.oa.BillManage" >
+        insert into Bill_Manage
+        <trim prefix="(" suffix=")" suffixOverrides="," >
+            <if test="bimId != null" >
+                BIM_Id,
+            </if>
+            <if test="bimStartTime != null" >
+                BIM_Start_Time,
+            </if>
+            <if test="bimEndTime != null" >
+                BIM_End_Time,
+            </if>
+            <if test="bimLastPayTime != null" >
+                BIM_Last_pay_Time,
+            </if>
+            <if test="bimRent != null" >
+                BIM_Rent,
+            </if>
+            <if test="bimDepositRmb != null" >
+                BIM_Deposit_RMB,
+            </if>
+            <if test="bimDelayPay != null" >
+                BIM_Delay_Pay,
+            </if>
+            <if test="bimPayTime != null" >
+                BIM_Pay_Time,
+            </if>
+            <if test="bimMark != null" >
+                BIM_Mark,
+            </if>
+            <if test="bimCreateTime != null" >
+                BIM_Create_Time,
+            </if>
+            <if test="bimState != null" >
+                BIM_State,
+            </if>
+            <if test="bimNo != null" >
+                BIM_No,
+            </if>
+            <if test="bimRomId != null" >
+                BIM_ROM_Id,
+            </if>
+            <if test="bimCoId != null" >
+                BIM_CO_Id,
+            </if>
+            <if test="bimCutId != null" >
+                BIM_CUT_Id,
+            </if>
+            <if test="bimWaterRmb != null" >
+                BIM_Water_RMB,
+            </if>
+            <if test="bimEnergyRmb != null" >
+                BIM_Energy_RMB,
+            </if>
+            <if test="bimUpkeepRmb != null" >
+                BIM_Upkeep_RMB,
+            </if>
+            <if test="bimExpensRmb != null" >
+                BIM_Expens_RMB,
+            </if>
+            <if test="bimIntermediaryFee != null" >
+                BIM_Intermediary_Fee,
+            </if>
+            <if test="bimLanFee != null" >
+                BIM_Lan_Fee,
+            </if>
+            <if test="bimCabletvFee != null" >
+                BIM_CableTV_Fee,
+            </if>
+            <if test="bimEmergencardFee != null" >
+                BIM_EmergenCard_Fee,
+            </if>
+            <if test="bimUpcardFee != null" >
+                BIM_UPCard_Fee,
+            </if>
+            <if test="bimTotalRmb != null" >
+                BIM_Total_RMB,
+            </if>
+            <if test="bimSysuse != null" >
+                BIM_SysUse,
+            </if>
+            <if test="bimCheckOverdue != null" >
+                BIM_Check_Overdue,
+            </if>
+            <if test="bimCheck != null" >
+                BIM_Check,
+            </if>
+            <if test="bimCheckUsName != null" >
+                BIM_Check_US_Name,
+            </if>
+            <if test="bimCheckDate != null" >
+                BIM_Check_Date,
+            </if>
+            <if test="bimType != null" >
+                BIM_Type,
+            </if>
+            <if test="bimPayTobank != null" >
+                bim_Pay_ToBank,
+            </if>
+            <if test="ts != null" >
+                ts,
+            </if>
+            <if test="bimRealpaytobank != null" >
+                bim_realPayToBank,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides="," >
+            <if test="bimId != null" >
+                #{bimId,jdbcType=INTEGER},
+            </if>
+            <if test="bimStartTime != null" >
+                #{bimStartTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="bimEndTime != null" >
+                #{bimEndTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="bimLastPayTime != null" >
+                #{bimLastPayTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="bimRent != null" >
+                #{bimRent,jdbcType=DECIMAL},
+            </if>
+            <if test="bimDepositRmb != null" >
+                #{bimDepositRmb,jdbcType=DECIMAL},
+            </if>
+            <if test="bimDelayPay != null" >
+                #{bimDelayPay,jdbcType=DECIMAL},
+            </if>
+            <if test="bimPayTime != null" >
+                #{bimPayTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="bimMark != null" >
+                #{bimMark,jdbcType=VARCHAR},
+            </if>
+            <if test="bimCreateTime != null" >
+                #{bimCreateTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="bimState != null" >
+                #{bimState,jdbcType=INTEGER},
+            </if>
+            <if test="bimNo != null" >
+                #{bimNo,jdbcType=VARCHAR},
+            </if>
+            <if test="bimRomId != null" >
+                #{bimRomId,jdbcType=INTEGER},
+            </if>
+            <if test="bimCoId != null" >
+                #{bimCoId,jdbcType=INTEGER},
+            </if>
+            <if test="bimCutId != null" >
+                #{bimCutId,jdbcType=INTEGER},
+            </if>
+            <if test="bimWaterRmb != null" >
+                #{bimWaterRmb,jdbcType=DECIMAL},
+            </if>
+            <if test="bimEnergyRmb != null" >
+                #{bimEnergyRmb,jdbcType=DECIMAL},
+            </if>
+            <if test="bimUpkeepRmb != null" >
+                #{bimUpkeepRmb,jdbcType=DECIMAL},
+            </if>
+            <if test="bimExpensRmb != null" >
+                #{bimExpensRmb,jdbcType=DECIMAL},
+            </if>
+            <if test="bimIntermediaryFee != null" >
+                #{bimIntermediaryFee,jdbcType=DECIMAL},
+            </if>
+            <if test="bimLanFee != null" >
+                #{bimLanFee,jdbcType=DECIMAL},
+            </if>
+            <if test="bimCabletvFee != null" >
+                #{bimCabletvFee,jdbcType=DECIMAL},
+            </if>
+            <if test="bimEmergencardFee != null" >
+                #{bimEmergencardFee,jdbcType=DECIMAL},
+            </if>
+            <if test="bimUpcardFee != null" >
+                #{bimUpcardFee,jdbcType=DECIMAL},
+            </if>
+            <if test="bimTotalRmb != null" >
+                #{bimTotalRmb,jdbcType=DECIMAL},
+            </if>
+            <if test="bimSysuse != null" >
+                #{bimSysuse,jdbcType=VARCHAR},
+            </if>
+            <if test="bimCheckOverdue != null" >
+                #{bimCheckOverdue,jdbcType=INTEGER},
+            </if>
+            <if test="bimCheck != null" >
+                #{bimCheck,jdbcType=INTEGER},
+            </if>
+            <if test="bimCheckUsName != null" >
+                #{bimCheckUsName,jdbcType=VARCHAR},
+            </if>
+            <if test="bimCheckDate != null" >
+                #{bimCheckDate,jdbcType=TIMESTAMP},
+            </if>
+            <if test="bimType != null" >
+                #{bimType,jdbcType=INTEGER},
+            </if>
+            <if test="bimPayTobank != null" >
+                #{bimPayTobank,jdbcType=INTEGER},
+            </if>
+            <if test="ts != null" >
+                #{ts,jdbcType=BIGINT},
+            </if>
+            <if test="bimRealpaytobank != null" >
+                #{bimRealpaytobank,jdbcType=INTEGER},
+            </if>
+        </trim>
+    </insert>
+
+    <update id="updateByPrimaryKeySelective" parameterType="com.qk365.coupons.entity.oa.BillManage" >
+        update Bill_Manage
+        <set >
+            <if test="bimStartTime != null" >
+                BIM_Start_Time = #{bimStartTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="bimEndTime != null" >
+                BIM_End_Time = #{bimEndTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="bimLastPayTime != null" >
+                BIM_Last_pay_Time = #{bimLastPayTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="bimRent != null" >
+                BIM_Rent = #{bimRent,jdbcType=DECIMAL},
+            </if>
+            <if test="bimDepositRmb != null" >
+                BIM_Deposit_RMB = #{bimDepositRmb,jdbcType=DECIMAL},
+            </if>
+            <if test="bimDelayPay != null" >
+                BIM_Delay_Pay = #{bimDelayPay,jdbcType=DECIMAL},
+            </if>
+            <if test="bimPayTime != null" >
+                BIM_Pay_Time = #{bimPayTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="bimMark != null" >
+                BIM_Mark = #{bimMark,jdbcType=VARCHAR},
+            </if>
+            <if test="bimCreateTime != null" >
+                BIM_Create_Time = #{bimCreateTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="bimState != null" >
+                BIM_State = #{bimState,jdbcType=INTEGER},
+            </if>
+            <if test="bimNo != null" >
+                BIM_No = #{bimNo,jdbcType=VARCHAR},
+            </if>
+            <if test="bimRomId != null" >
+                BIM_ROM_Id = #{bimRomId,jdbcType=INTEGER},
+            </if>
+            <if test="bimCoId != null" >
+                BIM_CO_Id = #{bimCoId,jdbcType=INTEGER},
+            </if>
+            <if test="bimCutId != null" >
+                BIM_CUT_Id = #{bimCutId,jdbcType=INTEGER},
+            </if>
+            <if test="bimWaterRmb != null" >
+                BIM_Water_RMB = #{bimWaterRmb,jdbcType=DECIMAL},
+            </if>
+            <if test="bimEnergyRmb != null" >
+                BIM_Energy_RMB = #{bimEnergyRmb,jdbcType=DECIMAL},
+            </if>
+            <if test="bimUpkeepRmb != null" >
+                BIM_Upkeep_RMB = #{bimUpkeepRmb,jdbcType=DECIMAL},
+            </if>
+            <if test="bimExpensRmb != null" >
+                BIM_Expens_RMB = #{bimExpensRmb,jdbcType=DECIMAL},
+            </if>
+            <if test="bimIntermediaryFee != null" >
+                BIM_Intermediary_Fee = #{bimIntermediaryFee,jdbcType=DECIMAL},
+            </if>
+            <if test="bimLanFee != null" >
+                BIM_Lan_Fee = #{bimLanFee,jdbcType=DECIMAL},
+            </if>
+            <if test="bimCabletvFee != null" >
+                BIM_CableTV_Fee = #{bimCabletvFee,jdbcType=DECIMAL},
+            </if>
+            <if test="bimEmergencardFee != null" >
+                BIM_EmergenCard_Fee = #{bimEmergencardFee,jdbcType=DECIMAL},
+            </if>
+            <if test="bimUpcardFee != null" >
+                BIM_UPCard_Fee = #{bimUpcardFee,jdbcType=DECIMAL},
+            </if>
+            <if test="bimTotalRmb != null" >
+                BIM_Total_RMB = #{bimTotalRmb,jdbcType=DECIMAL},
+            </if>
+            <if test="bimSysuse != null" >
+                BIM_SysUse = #{bimSysuse,jdbcType=VARCHAR},
+            </if>
+            <if test="bimCheckOverdue != null" >
+                BIM_Check_Overdue = #{bimCheckOverdue,jdbcType=INTEGER},
+            </if>
+            <if test="bimCheck != null" >
+                BIM_Check = #{bimCheck,jdbcType=INTEGER},
+            </if>
+            <if test="bimCheckUsName != null" >
+                BIM_Check_US_Name = #{bimCheckUsName,jdbcType=VARCHAR},
+            </if>
+            <if test="bimCheckDate != null" >
+                BIM_Check_Date = #{bimCheckDate,jdbcType=TIMESTAMP},
+            </if>
+            <if test="bimType != null" >
+                BIM_Type = #{bimType,jdbcType=INTEGER},
+            </if>
+            <if test="bimPayTobank != null" >
+                bim_Pay_ToBank = #{bimPayTobank,jdbcType=INTEGER},
+            </if>
+            <if test="ts != null" >
+                ts = #{ts,jdbcType=BIGINT},
+            </if>
+            <if test="bimRealpaytobank != null" >
+                bim_realPayToBank = #{bimRealpaytobank,jdbcType=INTEGER},
+            </if>
+        </set>
+        where BIM_Id = #{bimId,jdbcType=INTEGER}
+    </update>
+</mapper>

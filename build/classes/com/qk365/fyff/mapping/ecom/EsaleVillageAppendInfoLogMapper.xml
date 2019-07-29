@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.qk365.fyff.dao.ecom.EsaleVillageAppendInfoLogDao" >
+
+    <resultMap id="BaseResultMap" type="com.qk365.fyff.entity.ecom.EsaleVillageAppendInfoLog" >
+        <id column="id" property="id" jdbcType="INTEGER" />
+        <result column="village_id" property="villageId" jdbcType="INTEGER" />
+        <result column="village_external_code" property="villageExternalCode" jdbcType="VARCHAR" />
+        <result column="external_type" property="externalType" jdbcType="INTEGER" />
+        <result column="requestParam" property="requestparam" jdbcType="VARCHAR" />
+        <result column="reponseParam" property="reponseparam" jdbcType="VARCHAR" />
+        <result column="village_status" property="villageStatus" jdbcType="VARCHAR" />
+        <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    </resultMap>
+
+    <sql id="Base_Column_List" >
+        id, village_id, village_external_code, external_type, requestParam, reponseParam, 
+        village_status, create_time
+    </sql>
+
+    <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+        select 
+        <include refid="Base_Column_List" />
+        from esale_villageappendinfo_log
+        where id = #{id,jdbcType=INTEGER}
+    </select>
+
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+        delete from esale_villageappendinfo_log
+        where id = #{id,jdbcType=INTEGER}
+    </delete>
+
+    <insert id="insertSelective" parameterType="com.qk365.fyff.entity.ecom.EsaleVillageAppendInfoLog" >
+        insert into esale_villageappendinfo_log
+        <trim prefix="(" suffix=")" suffixOverrides="," >
+            <if test="id != null" >
+                id,
+            </if>
+            <if test="villageId != null" >
+                village_id,
+            </if>
+            <if test="villageExternalCode != null" >
+                village_external_code,
+            </if>
+            <if test="externalType != null" >
+                external_type,
+            </if>
+            <if test="requestparam != null" >
+                requestParam,
+            </if>
+            <if test="reponseparam != null" >
+                reponseParam,
+            </if>
+            <if test="villageStatus != null" >
+                village_status,
+            </if>
+            <if test="createTime != null" >
+                create_time,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides="," >
+            <if test="id != null" >
+                #{id,jdbcType=INTEGER},
+            </if>
+            <if test="villageId != null" >
+                #{villageId,jdbcType=INTEGER},
+            </if>
+            <if test="villageExternalCode != null" >
+                #{villageExternalCode,jdbcType=VARCHAR},
+            </if>
+            <if test="externalType != null" >
+                #{externalType,jdbcType=INTEGER},
+            </if>
+            <if test="requestparam != null" >
+                #{requestparam,jdbcType=VARCHAR},
+            </if>
+            <if test="reponseparam != null" >
+                #{reponseparam,jdbcType=VARCHAR},
+            </if>
+            <if test="villageStatus != null" >
+                #{villageStatus,jdbcType=VARCHAR},
+            </if>
+            <if test="createTime != null" >
+                #{createTime,jdbcType=TIMESTAMP},
+            </if>
+        </trim>
+    </insert>
+
+    <update id="updateByPrimaryKeySelective" parameterType="com.qk365.fyff.entity.ecom.EsaleVillageAppendInfoLog" >
+        update esale_villageappendinfo_log
+        <set >
+            <if test="villageId != null" >
+                village_id = #{villageId,jdbcType=INTEGER},
+            </if>
+            <if test="villageExternalCode != null" >
+                village_external_code = #{villageExternalCode,jdbcType=VARCHAR},
+            </if>
+            <if test="externalType != null" >
+                external_type = #{externalType,jdbcType=INTEGER},
+            </if>
+            <if test="requestparam != null" >
+                requestParam = #{requestparam,jdbcType=VARCHAR},
+            </if>
+            <if test="reponseparam != null" >
+                reponseParam = #{reponseparam,jdbcType=VARCHAR},
+            </if>
+            <if test="villageStatus != null" >
+                village_status = #{villageStatus,jdbcType=VARCHAR},
+            </if>
+            <if test="createTime != null" >
+                create_time = #{createTime,jdbcType=TIMESTAMP},
+            </if>
+        </set>
+        where id = #{id,jdbcType=INTEGER}
+    </update>
+</mapper>

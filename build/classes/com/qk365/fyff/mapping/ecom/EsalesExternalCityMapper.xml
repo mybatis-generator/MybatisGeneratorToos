@@ -1,0 +1,206 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.qk365.fyff.dao.ecom.EsalesExternalCityDao" >
+
+    <resultMap id="BaseResultMap" type="com.qk365.fyff.entity.ecom.EsalesExternalCity" >
+        <id column="TransactionNumber" property="transactionnumber" jdbcType="BIGINT" />
+        <result column="LocalId" property="localid" jdbcType="BIGINT" />
+        <result column="Longitude" property="longitude" jdbcType="VARCHAR" />
+        <result column="Latitude" property="latitude" jdbcType="VARCHAR" />
+        <result column="LocalName" property="localname" jdbcType="VARCHAR" />
+        <result column="ListName" property="listname" jdbcType="VARCHAR" />
+        <result column="IdPaths" property="idpaths" jdbcType="VARCHAR" />
+        <result column="Pid" property="pid" jdbcType="BIGINT" />
+        <result column="Depth" property="depth" jdbcType="INTEGER" />
+        <result column="State" property="state" jdbcType="INTEGER" />
+        <result column="SourceType" property="sourcetype" jdbcType="BIGINT" />
+        <result column="CreateTime" property="createtime" jdbcType="TIMESTAMP" />
+        <result column="CreateNo" property="createno" jdbcType="VARCHAR" />
+        <result column="UpdateTime" property="updatetime" jdbcType="TIMESTAMP" />
+        <result column="UpdateNo" property="updateno" jdbcType="VARCHAR" />
+        <result column="TS" property="ts" jdbcType="BIGINT" />
+        <result column="QkId" property="qkid" jdbcType="INTEGER" />
+    </resultMap>
+
+    <sql id="Base_Column_List" >
+        TransactionNumber, LocalId, Longitude, Latitude, LocalName, ListName, IdPaths, Pid, 
+        Depth, State, SourceType, CreateTime, CreateNo, UpdateTime, UpdateNo, TS, QkId
+    </sql>
+
+    <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+        select 
+        <include refid="Base_Column_List" />
+        from esales_externalcity
+        where TransactionNumber = #{transactionnumber,jdbcType=BIGINT}
+    </select>
+
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+        delete from esales_externalcity
+        where TransactionNumber = #{transactionnumber,jdbcType=BIGINT}
+    </delete>
+
+    <insert id="insertSelective" parameterType="com.qk365.fyff.entity.ecom.EsalesExternalCity" >
+        insert into esales_externalcity
+        <trim prefix="(" suffix=")" suffixOverrides="," >
+            <if test="transactionnumber != null" >
+                TransactionNumber,
+            </if>
+            <if test="localid != null" >
+                LocalId,
+            </if>
+            <if test="longitude != null" >
+                Longitude,
+            </if>
+            <if test="latitude != null" >
+                Latitude,
+            </if>
+            <if test="localname != null" >
+                LocalName,
+            </if>
+            <if test="listname != null" >
+                ListName,
+            </if>
+            <if test="idpaths != null" >
+                IdPaths,
+            </if>
+            <if test="pid != null" >
+                Pid,
+            </if>
+            <if test="depth != null" >
+                Depth,
+            </if>
+            <if test="state != null" >
+                State,
+            </if>
+            <if test="sourcetype != null" >
+                SourceType,
+            </if>
+            <if test="createtime != null" >
+                CreateTime,
+            </if>
+            <if test="createno != null" >
+                CreateNo,
+            </if>
+            <if test="updatetime != null" >
+                UpdateTime,
+            </if>
+            <if test="updateno != null" >
+                UpdateNo,
+            </if>
+            <if test="ts != null" >
+                TS,
+            </if>
+            <if test="qkid != null" >
+                QkId,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides="," >
+            <if test="transactionnumber != null" >
+                #{transactionnumber,jdbcType=BIGINT},
+            </if>
+            <if test="localid != null" >
+                #{localid,jdbcType=BIGINT},
+            </if>
+            <if test="longitude != null" >
+                #{longitude,jdbcType=VARCHAR},
+            </if>
+            <if test="latitude != null" >
+                #{latitude,jdbcType=VARCHAR},
+            </if>
+            <if test="localname != null" >
+                #{localname,jdbcType=VARCHAR},
+            </if>
+            <if test="listname != null" >
+                #{listname,jdbcType=VARCHAR},
+            </if>
+            <if test="idpaths != null" >
+                #{idpaths,jdbcType=VARCHAR},
+            </if>
+            <if test="pid != null" >
+                #{pid,jdbcType=BIGINT},
+            </if>
+            <if test="depth != null" >
+                #{depth,jdbcType=INTEGER},
+            </if>
+            <if test="state != null" >
+                #{state,jdbcType=INTEGER},
+            </if>
+            <if test="sourcetype != null" >
+                #{sourcetype,jdbcType=BIGINT},
+            </if>
+            <if test="createtime != null" >
+                #{createtime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="createno != null" >
+                #{createno,jdbcType=VARCHAR},
+            </if>
+            <if test="updatetime != null" >
+                #{updatetime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="updateno != null" >
+                #{updateno,jdbcType=VARCHAR},
+            </if>
+            <if test="ts != null" >
+                #{ts,jdbcType=BIGINT},
+            </if>
+            <if test="qkid != null" >
+                #{qkid,jdbcType=INTEGER},
+            </if>
+        </trim>
+    </insert>
+
+    <update id="updateByPrimaryKeySelective" parameterType="com.qk365.fyff.entity.ecom.EsalesExternalCity" >
+        update esales_externalcity
+        <set >
+            <if test="localid != null" >
+                LocalId = #{localid,jdbcType=BIGINT},
+            </if>
+            <if test="longitude != null" >
+                Longitude = #{longitude,jdbcType=VARCHAR},
+            </if>
+            <if test="latitude != null" >
+                Latitude = #{latitude,jdbcType=VARCHAR},
+            </if>
+            <if test="localname != null" >
+                LocalName = #{localname,jdbcType=VARCHAR},
+            </if>
+            <if test="listname != null" >
+                ListName = #{listname,jdbcType=VARCHAR},
+            </if>
+            <if test="idpaths != null" >
+                IdPaths = #{idpaths,jdbcType=VARCHAR},
+            </if>
+            <if test="pid != null" >
+                Pid = #{pid,jdbcType=BIGINT},
+            </if>
+            <if test="depth != null" >
+                Depth = #{depth,jdbcType=INTEGER},
+            </if>
+            <if test="state != null" >
+                State = #{state,jdbcType=INTEGER},
+            </if>
+            <if test="sourcetype != null" >
+                SourceType = #{sourcetype,jdbcType=BIGINT},
+            </if>
+            <if test="createtime != null" >
+                CreateTime = #{createtime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="createno != null" >
+                CreateNo = #{createno,jdbcType=VARCHAR},
+            </if>
+            <if test="updatetime != null" >
+                UpdateTime = #{updatetime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="updateno != null" >
+                UpdateNo = #{updateno,jdbcType=VARCHAR},
+            </if>
+            <if test="ts != null" >
+                TS = #{ts,jdbcType=BIGINT},
+            </if>
+            <if test="qkid != null" >
+                QkId = #{qkid,jdbcType=INTEGER},
+            </if>
+        </set>
+        where TransactionNumber = #{transactionnumber,jdbcType=BIGINT}
+    </update>
+</mapper>

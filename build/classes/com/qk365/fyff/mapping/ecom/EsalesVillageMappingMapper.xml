@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.qk365.fyff.dao.ecom.EsalesVillageMappingDao" >
+
+    <resultMap id="BaseResultMap" type="com.qk365.fyff.entity.ecom.EsalesVillageMapping" >
+        <id column="TransactionNumber" property="transactionnumber" jdbcType="BIGINT" />
+        <result column="QkId" property="qkid" jdbcType="INTEGER" />
+        <result column="ExternalId" property="externalid" jdbcType="BIGINT" />
+        <result column="IsConfirm" property="isconfirm" jdbcType="BIT" />
+        <result column="SourceType" property="sourcetype" jdbcType="BIGINT" />
+        <result column="Status" property="status" jdbcType="INTEGER" />
+        <result column="VillageInfo" property="villageinfo" jdbcType="VARCHAR" />
+        <result column="CreateTime" property="createtime" jdbcType="TIMESTAMP" />
+        <result column="CreateNo" property="createno" jdbcType="VARCHAR" />
+        <result column="UpdateTime" property="updatetime" jdbcType="TIMESTAMP" />
+        <result column="UpdateNo" property="updateno" jdbcType="VARCHAR" />
+        <result column="TS" property="ts" jdbcType="BIGINT" />
+    </resultMap>
+
+    <sql id="Base_Column_List" >
+        TransactionNumber, QkId, ExternalId, IsConfirm, SourceType, Status, VillageInfo, 
+        CreateTime, CreateNo, UpdateTime, UpdateNo, TS
+    </sql>
+
+    <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+        select 
+        <include refid="Base_Column_List" />
+        from esales_villagemapping
+        where TransactionNumber = #{transactionnumber,jdbcType=BIGINT}
+    </select>
+
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+        delete from esales_villagemapping
+        where TransactionNumber = #{transactionnumber,jdbcType=BIGINT}
+    </delete>
+
+    <insert id="insertSelective" parameterType="com.qk365.fyff.entity.ecom.EsalesVillageMapping" >
+        insert into esales_villagemapping
+        <trim prefix="(" suffix=")" suffixOverrides="," >
+            <if test="transactionnumber != null" >
+                TransactionNumber,
+            </if>
+            <if test="qkid != null" >
+                QkId,
+            </if>
+            <if test="externalid != null" >
+                ExternalId,
+            </if>
+            <if test="isconfirm != null" >
+                IsConfirm,
+            </if>
+            <if test="sourcetype != null" >
+                SourceType,
+            </if>
+            <if test="status != null" >
+                Status,
+            </if>
+            <if test="villageinfo != null" >
+                VillageInfo,
+            </if>
+            <if test="createtime != null" >
+                CreateTime,
+            </if>
+            <if test="createno != null" >
+                CreateNo,
+            </if>
+            <if test="updatetime != null" >
+                UpdateTime,
+            </if>
+            <if test="updateno != null" >
+                UpdateNo,
+            </if>
+            <if test="ts != null" >
+                TS,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides="," >
+            <if test="transactionnumber != null" >
+                #{transactionnumber,jdbcType=BIGINT},
+            </if>
+            <if test="qkid != null" >
+                #{qkid,jdbcType=INTEGER},
+            </if>
+            <if test="externalid != null" >
+                #{externalid,jdbcType=BIGINT},
+            </if>
+            <if test="isconfirm != null" >
+                #{isconfirm,jdbcType=BIT},
+            </if>
+            <if test="sourcetype != null" >
+                #{sourcetype,jdbcType=BIGINT},
+            </if>
+            <if test="status != null" >
+                #{status,jdbcType=INTEGER},
+            </if>
+            <if test="villageinfo != null" >
+                #{villageinfo,jdbcType=VARCHAR},
+            </if>
+            <if test="createtime != null" >
+                #{createtime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="createno != null" >
+                #{createno,jdbcType=VARCHAR},
+            </if>
+            <if test="updatetime != null" >
+                #{updatetime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="updateno != null" >
+                #{updateno,jdbcType=VARCHAR},
+            </if>
+            <if test="ts != null" >
+                #{ts,jdbcType=BIGINT},
+            </if>
+        </trim>
+    </insert>
+
+    <update id="updateByPrimaryKeySelective" parameterType="com.qk365.fyff.entity.ecom.EsalesVillageMapping" >
+        update esales_villagemapping
+        <set >
+            <if test="qkid != null" >
+                QkId = #{qkid,jdbcType=INTEGER},
+            </if>
+            <if test="externalid != null" >
+                ExternalId = #{externalid,jdbcType=BIGINT},
+            </if>
+            <if test="isconfirm != null" >
+                IsConfirm = #{isconfirm,jdbcType=BIT},
+            </if>
+            <if test="sourcetype != null" >
+                SourceType = #{sourcetype,jdbcType=BIGINT},
+            </if>
+            <if test="status != null" >
+                Status = #{status,jdbcType=INTEGER},
+            </if>
+            <if test="villageinfo != null" >
+                VillageInfo = #{villageinfo,jdbcType=VARCHAR},
+            </if>
+            <if test="createtime != null" >
+                CreateTime = #{createtime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="createno != null" >
+                CreateNo = #{createno,jdbcType=VARCHAR},
+            </if>
+            <if test="updatetime != null" >
+                UpdateTime = #{updatetime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="updateno != null" >
+                UpdateNo = #{updateno,jdbcType=VARCHAR},
+            </if>
+            <if test="ts != null" >
+                TS = #{ts,jdbcType=BIGINT},
+            </if>
+        </set>
+        where TransactionNumber = #{transactionnumber,jdbcType=BIGINT}
+    </update>
+</mapper>

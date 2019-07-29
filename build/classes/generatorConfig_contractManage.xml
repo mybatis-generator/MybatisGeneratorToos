@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>  
+<!DOCTYPE generatorConfiguration  
+ PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"  
+ "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">  
+<generatorConfiguration>
+
+   <!-- 引入配置文件 -->  
+   <properties resource="init.properties"/>
+   
+   <!-- 数据库驱动 -->
+   <classPathEntry  location="${contractmanage_classPath}"/>  
+   
+   <context id="mysqlTables"  targetRuntime="MyBatis3">  
+   		<!-- 注释 -->
+        <commentGenerator>  
+            <!-- 是否去除自动生成的注释 true：是 , false:否 -->
+            <property name="suppressAllComments" value="false"/>  
+            <!-- 是否生成注释代时间戳 -->
+            <property name="suppressDate" value="false"/>  
+        </commentGenerator>  
+        
+      	<!-- jdbc连接 -->
+		<jdbcConnection driverClass="${contractmanage_driver_class}" 
+			connectionURL="${contractmanage_jdbc_url}" 
+			userId="${contractmanage_jdbc_user}" 
+			password="${contractmanage_jdbc_password}">  
+        </jdbcConnection>  
+        
+        <javaTypeResolver>  
+            <property name="forceBigDecimals" value="false"/>  
+        </javaTypeResolver>  
+     	
+     	<!-- model配置 -->
+        <javaModelGenerator targetPackage="com.qk365.contractManage.entity" targetProject="${contractmanage_project}">  
+            <property name="enableSubPackages" value="true"/>  
+            <property name="trimStrings" value="true"/>  
+        </javaModelGenerator>  
+        
+        <!-- mapping配置 -->
+        <sqlMapGenerator targetPackage="com.qk365.contractManage.mapping" targetProject="${contractmanage_project}">  
+            <property name="enableSubPackages" value="true"/>  
+        </sqlMapGenerator>  
+         
+        <!-- dao配置 -->
+        <javaClientGenerator type="XMLMAPPER" targetPackage="com.qk365.contractManage.dao" targetProject="${contractmanage_project}">  
+            <property name="enableSubPackages" value="true"/>  
+        </javaClientGenerator>  
+        
+        <!-- 要生成的表,根据自己需要配置-->
+    	<table tableName="QK_Notes_Video" domainObjectName="QKNotesVideo" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false">
+    	</table>
+    	<table tableName="QK_Video_Operate_Record" domainObjectName="QKVideoOperateRecord" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false">
+    	</table>
+    
+    
+    </context>  
+</generatorConfiguration>  

@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>  
+<!DOCTYPE generatorConfiguration  
+ PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"  
+ "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">  
+<generatorConfiguration>
+
+   <!-- 引入配置文件 -->  
+   <properties resource="init.properties"/>
+   
+   <!-- 数据库驱动 -->
+   <classPathEntry  location="${houselisting_classPath}"/>  
+   
+   <context id="mysqlTables"  targetRuntime="MyBatis3">  
+   		<!-- 注释 -->
+        <commentGenerator>  
+            <!-- 是否去除自动生成的注释 true：是 , false:否 -->
+            <property name="suppressAllComments" value="false"/>  
+            <!-- 是否生成注释代时间戳 -->
+            <property name="suppressDate" value="false"/>  
+        </commentGenerator>  
+        
+      	<!-- jdbc连接 -->
+		<jdbcConnection
+			driverClass="${houselisting_driver_class}"
+			connectionURL="${houselisting_jdbc_url}"
+			userId="${houselisting_jdbc_user}"
+			password="${houselisting_jdbc_password}">  
+        </jdbcConnection>  
+        
+        <javaTypeResolver type="org.mybatis.generator.internal.types.JavaTypeResolverDefaultImpl">
+            <property name="forceBigDecimals" value="false"/> 
+        </javaTypeResolver>  
+     	
+     	<!-- model配置 -->
+        <javaModelGenerator targetPackage="com.qk365.housereg.mgmt.ba.entity" targetProject="${houselisting_project}">  
+            <property name="enableSubPackages" value="true"/>  
+            <property name="trimStrings" value="true"/>  
+        </javaModelGenerator>  
+        
+        <!-- mapping配置 -->
+        <sqlMapGenerator targetPackage="com.qk365.housereg.mgmt.ba.mapping" targetProject="${houselisting_project}">  
+            <property name="enableSubPackages" value="true"/>  
+        </sqlMapGenerator>  
+         
+        <!-- dao配置 -->
+        <javaClientGenerator type="XMLMAPPER" targetPackage="com.qk365.housereg.mgmt.ba.dao" targetProject="${houselisting_project}">  
+            <property name="enableSubPackages" value="true"/>  
+        </javaClientGenerator>  
+        
+        <!-- 要生成的表,根据自己需要配置-->
+        <!-- <table schema="${houselisting_jdbc_user}" tableName="house_entering_push" domainObjectName="HouseEnteringPush" 
+	        enableCountByExample="fales" 
+	        enableUpdateByExample="fales" 
+	        enableDeleteByExample="fales" 
+	        enableSelectByExample="fales" 
+	        selectByExampleQueryId="fales">
+        	<columnOverride column="house_push_state" javaType="int"/>
+        	<columnOverride column="attachment_push_state" javaType="int"/>
+			<columnOverride column="rent_type" javaType="int"/>
+			<columnOverride column="state" javaType="int"/>
+			<columnOverride column="enter_info" javaType="java.lang.String" jdbcType="VARCHAR" />  
+			<columnOverride column="enter_attach_info" javaType="java.lang.String" jdbcType="VARCHAR" />
+			<columnOverride column="verify_resp" javaType="java.lang.String" jdbcType="VARCHAR" />
+        </table> -->
+        
+        <!-- <table tableName="room_listing_push" domainObjectName="RoomListingPush" 
+        	enableCountByExample="fales" 
+	        enableUpdateByExample="fales" 
+	        enableDeleteByExample="fales" 
+	        enableSelectByExample="fales" 
+	        selectByExampleQueryId="fales">
+	    	<columnOverride column="rent_type" javaType="java.lang.Integer" />
+    	<columnOverride column="listing_push_state" javaType="java.lang.Integer" />
+    	<columnOverride column="push_type" javaType="java.lang.Integer" />
+    	<columnOverride column="state" javaType="java.lang.Integer" />
+    	<columnOverride column="listing_info" javaType="java.lang.String" jdbcType="VARCHAR" />
+	    </table> -->
+    
+    	<!-- <table tableName="contract_push" domainObjectName="ContractPush"        	
+    		enableCountByExample="fales" 
+	        enableUpdateByExample="fales" 
+	        enableDeleteByExample="fales" 
+	        enableSelectByExample="fales" 
+	        selectByExampleQueryId="fales">
+	    	<columnOverride column="contract_attach" javaType="java.lang.String" jdbcType="VARCHAR" />  
+	    	<columnOverride column="attach_push_state" javaType="java.lang.Integer"/>
+	    	<columnOverride column="contract_push_state" javaType="java.lang.Integer"/>
+	    	<columnOverride column="push_type" javaType="java.lang.Integer"/>
+	    	<columnOverride column="state" javaType="java.lang.Integer"/>
+	    </table> -->
+	    
+	    <table tableName="room_push_fail_log" domainObjectName="RoomPushFailLog" 
+	    	enableCountByExample="fales" 
+	        enableUpdateByExample="fales" 
+	        enableDeleteByExample="fales" 
+	        enableSelectByExample="fales" 
+	        selectByExampleQueryId="fales">
+	    </table>
+	    
+	    <table tableName="room_push_report" domainObjectName="RoomPushReport" 
+	    	enableCountByExample="fales" 
+	        enableUpdateByExample="fales" 
+	        enableDeleteByExample="fales" 
+	        enableSelectByExample="fales" 
+	        selectByExampleQueryId="fales">
+	    </table>
+    	
+    </context>  
+</generatorConfiguration>  

@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="UTF-8"?>  
+<!DOCTYPE generatorConfiguration  
+ PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"  
+ "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">  
+<generatorConfiguration>
+
+   <!-- 引入配置文件 -->  
+   <properties resource="init.properties"/>
+   
+   <!-- 数据库驱动 -->
+   <classPathEntry  location="${houselisting_classPath}"/>  
+   
+   <context id="mysqlTables"  targetRuntime="MyBatis3">  
+   		<!-- 注释 -->
+        <commentGenerator>  
+            <!-- 是否去除自动生成的注释 true：是 , false:否 -->
+            <property name="suppressAllComments" value="false"/>  
+            <!-- 是否生成注释代时间戳 -->
+            <property name="suppressDate" value="false"/>  
+        </commentGenerator>  
+        
+      	<!-- jdbc连接 -->
+		<jdbcConnection
+			driverClass="${houselisting_driver_class}"
+			connectionURL="${houselisting_jdbc_url}"
+			userId="${houselisting_jdbc_user}"
+			password="${houselisting_jdbc_password}">  
+        </jdbcConnection>  
+        
+        <javaTypeResolver type="org.mybatis.generator.internal.types.JavaTypeResolverDefaultImpl">
+            <property name="forceBigDecimals" value="false"/> 
+        </javaTypeResolver>  
+     	
+     	<!-- model配置 -->
+        <javaModelGenerator targetPackage="com.qk365.houseReg.entity" targetProject="${houselisting_project}">  
+            <property name="enableSubPackages" value="true"/>  
+            <property name="trimStrings" value="true"/>  
+        </javaModelGenerator>  
+        
+        <!-- mapping配置 -->
+        <sqlMapGenerator targetPackage="com.qk365.houseReg.mapping" targetProject="${houselisting_project}">  
+            <property name="enableSubPackages" value="true"/>  
+        </sqlMapGenerator>  
+         
+        <!-- dao配置 -->
+        <javaClientGenerator type="XMLMAPPER" targetPackage="com.qk365.houseReg.dao" targetProject="${houselisting_project}">  
+            <property name="enableSubPackages" value="true"/>  
+        </javaClientGenerator>  
+        
+        <!-- 要生成的表,根据自己需要配置-->
+        <!-- <table schema="${houselisting_jdbc_user}" tableName="cell_area" domainObjectName="CellArea" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false">
+    	</table>
+    	
+    	<table schema="${houselisting_jdbc_user}" tableName="cell_photo" domainObjectName="CellPhoto" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false">
+    	</table>
+    	
+    	<table schema="${houselisting_jdbc_user}" tableName="contract" domainObjectName="Contract" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false">
+    		<columnOverride column="CO_Public_Equipment" javaType="java.lang.String" jdbcType="VARCHAR" /> 
+    		<columnOverride column="CO_Equipment" javaType="java.lang.String" jdbcType="VARCHAR" /> 
+    	</table>
+    	
+    	<table schema="${houselisting_jdbc_user}" tableName="contract_push" domainObjectName="ContractPush" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false">
+    		<columnOverride column="attach_push_state" javaType="int"/>
+    		<columnOverride column="contract_push_state" javaType="int"/>
+    		<columnOverride column="push_type" javaType="int"/>
+    		<columnOverride column="state" javaType="int"/>
+    	</table>
+    	
+    	<table schema="${houselisting_jdbc_user}" tableName="customer_cell" domainObjectName="CustomerCell" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false">
+    		<columnOverride column="CUC_Content" javaType="java.lang.String" jdbcType="VARCHAR" /> 
+    		<columnOverride column="CUC_Marke" javaType="java.lang.String" jdbcType="VARCHAR" /> 
+    		<columnOverride column="CUC_Property_Address" javaType="java.lang.String" jdbcType="VARCHAR" /> 
+    		<columnOverride column="village" javaType="java.lang.String" jdbcType="VARCHAR" /> 
+    		<columnOverride column="cuc_gis" javaType="java.lang.String" jdbcType="VARCHAR" /> 
+    		<columnOverride column="CUC_Recommend" javaType="java.lang.String" jdbcType="VARCHAR" /> 
+    		<columnOverride column="CUC_Video_URL" javaType="java.lang.String" jdbcType="VARCHAR" /> 
+    		<columnOverride column="VideoUrl" javaType="java.lang.String" jdbcType="VARCHAR" /> 
+    		<columnOverride column="CUC_Plan_Url" javaType="java.lang.String" jdbcType="VARCHAR" /> 
+    	</table>
+    	
+    	<table schema="${houselisting_jdbc_user}" tableName="customer_owen" domainObjectName="CustomerOwen" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false">
+    		<columnOverride column="CUO_Mark" javaType="java.lang.String" jdbcType="VARCHAR" /> 
+    	</table>
+    	
+    	<table schema="${houselisting_jdbc_user}" tableName="customer_tenant" domainObjectName="CustomerTenant" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false">
+    		<columnOverride column="CUT_Mark" javaType="java.lang.String" jdbcType="VARCHAR" /> 
+    	</table>
+    	
+    	<table schema="${houselisting_jdbc_user}" tableName="esales_roompublishstate" domainObjectName="EsalesRoompublishstate" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false">
+    	</table>
+    	
+    	<table schema="${houselisting_jdbc_user}" tableName="for_rent_room" domainObjectName="ForRentRoom" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false">
+    		<columnOverride column="state" javaType="int"/>
+    	</table>
+    	
+    	<table schema="${houselisting_jdbc_user}" tableName="house_entering_push" domainObjectName="HouseEnteringPush" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false">
+        	<columnOverride column="house_push_state" javaType="int"/>
+        	<columnOverride column="attachment_push_state" javaType="int"/>
+			<columnOverride column="house_push_resp" javaType="int"/>
+			<columnOverride column="attachment_push_resp" javaType="int"/>
+			<columnOverride column="verify_state" javaType="int"/>
+			<columnOverride column="rent_type" javaType="int"/>
+			<columnOverride column="base_push_err_num" javaType="int"/>
+			<columnOverride column="attach_push_err_num" javaType="int"/>
+			<columnOverride column="state" javaType="int"/>
+        </table>
+    	
+        <table schema="${houselisting_jdbc_user}" tableName="house_listing_push" domainObjectName="HouseListingPush" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false">
+        	<columnOverride column="listing_push_state" javaType="int"/>
+			<columnOverride column="attachment_push_state" javaType="int"/>
+			<columnOverride column="state" javaType="int"/>
+			<columnOverride column="listing_info" javaType="java.lang.String" jdbcType="VARCHAR" />  
+			<columnOverride column="listing_attach" javaType="java.lang.String" jdbcType="VARCHAR" />  
+			<columnOverride column="push_type" javaType="int" /> 
+        </table> 
+        
+    	<table schema="${houselisting_jdbc_user}" tableName="ower_contract" domainObjectName="OwerContract" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false">
+    		<columnOverride column="OC_CUC_Address" javaType="java.lang.String" jdbcType="VARCHAR" /> 
+    		<columnOverride column="OC_Marke" javaType="java.lang.String" jdbcType="VARCHAR" /> 
+    		<columnOverride column="unrenew_reason" javaType="java.lang.String" jdbcType="VARCHAR" /> 
+    	</table>
+    	
+    	<table schema="${houselisting_jdbc_user}" tableName="payment" domainObjectName="Payment" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false">
+    		<columnOverride column="PAM_Mark" javaType="java.lang.String" jdbcType="VARCHAR" /> 
+    	</table>
+    	
+    	<table schema="${houselisting_jdbc_user}" tableName="provincial" domainObjectName="Provincial" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false">
+    		<columnOverride column="keyword" javaType="java.lang.String" jdbcType="VARCHAR" /> 
+    	</table>
+    	
+    	<table schema="${houselisting_jdbc_user}" tableName="room_listing_push" domainObjectName="RoomListingPush" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false">
+    		<columnOverride column="rent_type" javaType="int"/>
+    		<columnOverride column="listing_push_state" javaType="int"/>
+    		<columnOverride column="state" javaType="int"/>
+    		<columnOverride column="state" javaType="int"/>
+    		<columnOverride column="state" javaType="int"/>
+    	</table>
+    	
+    	<table schema="${houselisting_jdbc_user}" tableName="t_room_summary" domainObjectName="RoomSummary" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false">
+    		<columnOverride column="room_address" javaType="java.lang.String" jdbcType="VARCHAR" /> 
+    		<columnOverride column="room_video_url" javaType="java.lang.String" jdbcType="VARCHAR" /> 
+    		<columnOverride column="room_360_url" javaType="java.lang.String" jdbcType="VARCHAR" /> 
+    		<columnOverride column="room_recommend" javaType="java.lang.String" jdbcType="VARCHAR" /> 
+    		<columnOverride column="cuc_recommend" javaType="java.lang.String" jdbcType="VARCHAR" /> 
+    		<columnOverride column="v_shopping" javaType="java.lang.String" jdbcType="VARCHAR" /> 
+    		
+    		<columnOverride column="v_traffic" javaType="java.lang.String" jdbcType="VARCHAR" />
+    		<columnOverride column="v_leisure" javaType="java.lang.String" jdbcType="VARCHAR" />
+    	</table> 
+    	
+    	<table tableName="prc_mapping" domainObjectName="PrcMapping" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false">
+    	</table> -->
+    	
+    	<!-- <table schema="${houselisting_jdbc_user}" tableName="api_err_log" domainObjectName="ApiErrLog" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false">
+    		<columnOverride column="api_param" javaType="java.lang.String" jdbcType="VARCHAR" />
+    		<columnOverride column="api_res" javaType="java.lang.String" jdbcType="VARCHAR" />
+    	</table>
+    	<table schema="${houselisting_jdbc_user}" tableName="attach_upload_info" domainObjectName="AttachUploadInfo" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false">
+    	</table>
+    	<table schema="${houselisting_jdbc_user}" tableName="house_out_info" domainObjectName="HouseOutInfo" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false">
+    		<columnOverride column="out_house_info" javaType="java.lang.String" jdbcType="VARCHAR" />
+    	</table> 
+    	<table schema="${houselisting_jdbc_user}" tableName="room_contract_rg_info" domainObjectName="RoomContractRgInfo" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false">
+    		<columnOverride column="register_info" javaType="java.lang.String" jdbcType="VARCHAR" />
+    		<columnOverride column="register_attach" javaType="java.lang.String" jdbcType="VARCHAR" />
+    	</table>-->
+    	
+    	<!-- <table schema="${houselisting_jdbc_user}" tableName="room_push_report" domainObjectName="RoomPushReport" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false">
+    	</table> -->
+    	
+    	<table schema="${houselisting_jdbc_user}" tableName="house_entering_push" domainObjectName="HouseEnteringPush" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false">
+        	<columnOverride column="house_push_state" javaType="Integer"/>
+        	<columnOverride column="attachment_push_state" javaType="Integer"/>
+			<columnOverride column="rent_type" javaType="Integer"/>
+			<columnOverride column="state" javaType="Integer"/>
+			<columnOverride column="enter_info" javaType="java.lang.String" jdbcType="VARCHAR" />
+			<columnOverride column="enter_attach_info" javaType="java.lang.String" jdbcType="VARCHAR" />
+        </table>
+    	
+    </context>  
+</generatorConfiguration>  

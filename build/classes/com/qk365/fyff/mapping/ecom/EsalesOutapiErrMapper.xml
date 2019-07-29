@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.qk365.fyff.dao.ecom.EsalesOutapiErrDao" >
+
+    <resultMap id="BaseResultMap" type="com.qk365.fyff.entity.ecom.EsalesOutapiErr" >
+        <id column="id" property="id" jdbcType="INTEGER" />
+        <result column="schedule_code" property="scheduleCode" jdbcType="VARCHAR" />
+        <result column="extend_type" property="extendType" jdbcType="INTEGER" />
+        <result column="api_no" property="apiNo" jdbcType="VARCHAR" />
+        <result column="api_url" property="apiUrl" jdbcType="VARCHAR" />
+        <result column="api_param" property="apiParam" jdbcType="VARCHAR" />
+        <result column="api_res" property="apiRes" jdbcType="VARCHAR" />
+        <result column="status" property="status" jdbcType="INTEGER" />
+        <result column="retry_num" property="retryNum" jdbcType="INTEGER" />
+        <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+        <result column="update_time" property="updateTime" jdbcType="TIMESTAMP" />
+        <result column="ts" property="ts" jdbcType="BIGINT" />
+    </resultMap>
+
+    <sql id="Base_Column_List" >
+        id, schedule_code, extend_type, api_no, api_url, api_param, api_res, status, retry_num, 
+        create_time, update_time, ts
+    </sql>
+
+    <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+        select 
+        <include refid="Base_Column_List" />
+        from esales_outapi_err
+        where id = #{id,jdbcType=INTEGER}
+    </select>
+
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+        delete from esales_outapi_err
+        where id = #{id,jdbcType=INTEGER}
+    </delete>
+
+    <insert id="insertSelective" parameterType="com.qk365.fyff.entity.ecom.EsalesOutapiErr" >
+        insert into esales_outapi_err
+        <trim prefix="(" suffix=")" suffixOverrides="," >
+            <if test="id != null" >
+                id,
+            </if>
+            <if test="scheduleCode != null" >
+                schedule_code,
+            </if>
+            <if test="extendType != null" >
+                extend_type,
+            </if>
+            <if test="apiNo != null" >
+                api_no,
+            </if>
+            <if test="apiUrl != null" >
+                api_url,
+            </if>
+            <if test="apiParam != null" >
+                api_param,
+            </if>
+            <if test="apiRes != null" >
+                api_res,
+            </if>
+            <if test="status != null" >
+                status,
+            </if>
+            <if test="retryNum != null" >
+                retry_num,
+            </if>
+            <if test="createTime != null" >
+                create_time,
+            </if>
+            <if test="updateTime != null" >
+                update_time,
+            </if>
+            <if test="ts != null" >
+                ts,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides="," >
+            <if test="id != null" >
+                #{id,jdbcType=INTEGER},
+            </if>
+            <if test="scheduleCode != null" >
+                #{scheduleCode,jdbcType=VARCHAR},
+            </if>
+            <if test="extendType != null" >
+                #{extendType,jdbcType=INTEGER},
+            </if>
+            <if test="apiNo != null" >
+                #{apiNo,jdbcType=VARCHAR},
+            </if>
+            <if test="apiUrl != null" >
+                #{apiUrl,jdbcType=VARCHAR},
+            </if>
+            <if test="apiParam != null" >
+                #{apiParam,jdbcType=VARCHAR},
+            </if>
+            <if test="apiRes != null" >
+                #{apiRes,jdbcType=VARCHAR},
+            </if>
+            <if test="status != null" >
+                #{status,jdbcType=INTEGER},
+            </if>
+            <if test="retryNum != null" >
+                #{retryNum,jdbcType=INTEGER},
+            </if>
+            <if test="createTime != null" >
+                #{createTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="updateTime != null" >
+                #{updateTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="ts != null" >
+                #{ts,jdbcType=BIGINT},
+            </if>
+        </trim>
+    </insert>
+
+    <update id="updateByPrimaryKeySelective" parameterType="com.qk365.fyff.entity.ecom.EsalesOutapiErr" >
+        update esales_outapi_err
+        <set >
+            <if test="scheduleCode != null" >
+                schedule_code = #{scheduleCode,jdbcType=VARCHAR},
+            </if>
+            <if test="extendType != null" >
+                extend_type = #{extendType,jdbcType=INTEGER},
+            </if>
+            <if test="apiNo != null" >
+                api_no = #{apiNo,jdbcType=VARCHAR},
+            </if>
+            <if test="apiUrl != null" >
+                api_url = #{apiUrl,jdbcType=VARCHAR},
+            </if>
+            <if test="apiParam != null" >
+                api_param = #{apiParam,jdbcType=VARCHAR},
+            </if>
+            <if test="apiRes != null" >
+                api_res = #{apiRes,jdbcType=VARCHAR},
+            </if>
+            <if test="status != null" >
+                status = #{status,jdbcType=INTEGER},
+            </if>
+            <if test="retryNum != null" >
+                retry_num = #{retryNum,jdbcType=INTEGER},
+            </if>
+            <if test="createTime != null" >
+                create_time = #{createTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="updateTime != null" >
+                update_time = #{updateTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="ts != null" >
+                ts = #{ts,jdbcType=BIGINT},
+            </if>
+        </set>
+        where id = #{id,jdbcType=INTEGER}
+    </update>
+</mapper>

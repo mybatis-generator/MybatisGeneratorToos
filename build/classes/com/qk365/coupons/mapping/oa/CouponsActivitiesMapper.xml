@@ -1,0 +1,502 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.qk365.coupons.dao.oa.CouponsActivitiesDao" >
+
+    <resultMap id="BaseResultMap" type="com.qk365.coupons.entity.oa.CouponsActivities" >
+        <id column="ca_id" property="caId" jdbcType="INTEGER" />
+        <result column="pac_id" property="pacId" jdbcType="INTEGER" />
+        <result column="ca_code" property="caCode" jdbcType="VARCHAR" />
+        <result column="ca_cut_id" property="caCutId" jdbcType="INTEGER" />
+        <result column="ca_user_id" property="caUserId" jdbcType="INTEGER" />
+        <result column="ca_color" property="caColor" jdbcType="VARCHAR" />
+        <result column="ca_state" property="caState" jdbcType="INTEGER" />
+        <result column="ca_type" property="caType" jdbcType="INTEGER" />
+        <result column="ca_use_time" property="caUseTime" jdbcType="TIMESTAMP" />
+        <result column="ca_bim_id" property="caBimId" jdbcType="VARCHAR" />
+        <result column="ca_estimate_Cost" property="caEstimateCost" jdbcType="DECIMAL" />
+        <result column="ca_actual_Cost" property="caActualCost" jdbcType="DECIMAL" />
+        <result column="ca_is_Donation" property="caIsDonation" jdbcType="INTEGER" />
+        <result column="ca_isSuperposition" property="caIssuperposition" jdbcType="INTEGER" />
+        <result column="ca_start_time" property="caStartTime" jdbcType="TIMESTAMP" />
+        <result column="ca_end_time" property="caEndTime" jdbcType="TIMESTAMP" />
+        <result column="ec_id" property="ecId" jdbcType="INTEGER" />
+        <result column="ca_voucher_type" property="caVoucherType" jdbcType="VARCHAR" />
+        <result column="ca_version" property="caVersion" jdbcType="INTEGER" />
+        <result column="ca_resource" property="caResource" jdbcType="INTEGER" />
+        <result column="ca_cost_market_percentage" property="caCostMarketPercentage" jdbcType="DECIMAL" />
+        <result column="ca_cost_serviceCenter_percentage" property="caCostServicecenterPercentage" jdbcType="DECIMAL" />
+        <result column="ca_cost_market" property="caCostMarket" jdbcType="DECIMAL" />
+        <result column="ca_cost_serviceCenter" property="caCostServicecenter" jdbcType="DECIMAL" />
+        <result column="ca_rom_id" property="caRomId" jdbcType="INTEGER" />
+        <result column="ca_serviceCenter_Id" property="caServicecenterId" jdbcType="INTEGER" />
+        <result column="ca_is_recover" property="caIsRecover" jdbcType="INTEGER" />
+        <result column="ca_recover_month" property="caRecoverMonth" jdbcType="INTEGER" />
+        <result column="ca_update_time" property="caUpdateTime" jdbcType="TIMESTAMP" />
+        <result column="ca_delayDay" property="caDelayday" jdbcType="INTEGER" />
+        <result column="ca_receive_mobile" property="caReceiveMobile" jdbcType="VARCHAR" />
+        <result column="ca_receive_time" property="caReceiveTime" jdbcType="TIMESTAMP" />
+        <result column="ca_share_amount" property="caShareAmount" jdbcType="DECIMAL" />
+        <result column="st_id" property="stId" jdbcType="INTEGER" />
+        <result column="st_group" property="stGroup" jdbcType="INTEGER" />
+        <result column="ca_cut_name" property="caCutName" jdbcType="NVARCHAR" />
+        <result column="ca_rules" property="caRules" jdbcType="VARCHAR" />
+        <result column="ca_service_center_name" property="caServiceCenterName" jdbcType="NVARCHAR" />
+        <result column="ca_area_name" property="caAreaName" jdbcType="NVARCHAR" />
+        <result column="ca_room_address" property="caRoomAddress" jdbcType="NVARCHAR" />
+        <result column="ca_cut_voucher_no" property="caCutVoucherNo" jdbcType="NVARCHAR" />
+        <result column="ca_create_time" property="caCreateTime" jdbcType="TIMESTAMP" />
+        <result column="co_id" property="coId" jdbcType="INTEGER" />
+        <result column="ca_csa_id" property="caCsaId" jdbcType="INTEGER" />
+        <result column="ca_recover_reason" property="caRecoverReason" jdbcType="VARCHAR" />
+        <result column="ca_bim_end_time" property="caBimEndTime" jdbcType="TIMESTAMP" />
+    </resultMap>
+
+    <sql id="Base_Column_List" >
+        ca_id, pac_id, ca_code, ca_cut_id, ca_user_id, ca_color, ca_state, ca_type, ca_use_time, 
+        ca_bim_id, ca_estimate_Cost, ca_actual_Cost, ca_is_Donation, ca_isSuperposition, 
+        ca_start_time, ca_end_time, ec_id, ca_voucher_type, ca_version, ca_resource, ca_cost_market_percentage, 
+        ca_cost_serviceCenter_percentage, ca_cost_market, ca_cost_serviceCenter, ca_rom_id, 
+        ca_serviceCenter_Id, ca_is_recover, ca_recover_month, ca_update_time, ca_delayDay, 
+        ca_receive_mobile, ca_receive_time, ca_share_amount, st_id, st_group, ca_cut_name, 
+        ca_rules, ca_service_center_name, ca_area_name, ca_room_address, ca_cut_voucher_no, 
+        ca_create_time, co_id, ca_csa_id, ca_recover_reason, ca_bim_end_time
+    </sql>
+
+    <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+        select 
+        <include refid="Base_Column_List" />
+        from Coupons_Activities
+        where ca_id = #{caId,jdbcType=INTEGER}
+    </select>
+
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+        delete from Coupons_Activities
+        where ca_id = #{caId,jdbcType=INTEGER}
+    </delete>
+
+    <insert id="insertSelective" parameterType="com.qk365.coupons.entity.oa.CouponsActivities" >
+        insert into Coupons_Activities
+        <trim prefix="(" suffix=")" suffixOverrides="," >
+            <if test="caId != null" >
+                ca_id,
+            </if>
+            <if test="pacId != null" >
+                pac_id,
+            </if>
+            <if test="caCode != null" >
+                ca_code,
+            </if>
+            <if test="caCutId != null" >
+                ca_cut_id,
+            </if>
+            <if test="caUserId != null" >
+                ca_user_id,
+            </if>
+            <if test="caColor != null" >
+                ca_color,
+            </if>
+            <if test="caState != null" >
+                ca_state,
+            </if>
+            <if test="caType != null" >
+                ca_type,
+            </if>
+            <if test="caUseTime != null" >
+                ca_use_time,
+            </if>
+            <if test="caBimId != null" >
+                ca_bim_id,
+            </if>
+            <if test="caEstimateCost != null" >
+                ca_estimate_Cost,
+            </if>
+            <if test="caActualCost != null" >
+                ca_actual_Cost,
+            </if>
+            <if test="caIsDonation != null" >
+                ca_is_Donation,
+            </if>
+            <if test="caIssuperposition != null" >
+                ca_isSuperposition,
+            </if>
+            <if test="caStartTime != null" >
+                ca_start_time,
+            </if>
+            <if test="caEndTime != null" >
+                ca_end_time,
+            </if>
+            <if test="ecId != null" >
+                ec_id,
+            </if>
+            <if test="caVoucherType != null" >
+                ca_voucher_type,
+            </if>
+            <if test="caVersion != null" >
+                ca_version,
+            </if>
+            <if test="caResource != null" >
+                ca_resource,
+            </if>
+            <if test="caCostMarketPercentage != null" >
+                ca_cost_market_percentage,
+            </if>
+            <if test="caCostServicecenterPercentage != null" >
+                ca_cost_serviceCenter_percentage,
+            </if>
+            <if test="caCostMarket != null" >
+                ca_cost_market,
+            </if>
+            <if test="caCostServicecenter != null" >
+                ca_cost_serviceCenter,
+            </if>
+            <if test="caRomId != null" >
+                ca_rom_id,
+            </if>
+            <if test="caServicecenterId != null" >
+                ca_serviceCenter_Id,
+            </if>
+            <if test="caIsRecover != null" >
+                ca_is_recover,
+            </if>
+            <if test="caRecoverMonth != null" >
+                ca_recover_month,
+            </if>
+            <if test="caUpdateTime != null" >
+                ca_update_time,
+            </if>
+            <if test="caDelayday != null" >
+                ca_delayDay,
+            </if>
+            <if test="caReceiveMobile != null" >
+                ca_receive_mobile,
+            </if>
+            <if test="caReceiveTime != null" >
+                ca_receive_time,
+            </if>
+            <if test="caShareAmount != null" >
+                ca_share_amount,
+            </if>
+            <if test="stId != null" >
+                st_id,
+            </if>
+            <if test="stGroup != null" >
+                st_group,
+            </if>
+            <if test="caCutName != null" >
+                ca_cut_name,
+            </if>
+            <if test="caRules != null" >
+                ca_rules,
+            </if>
+            <if test="caServiceCenterName != null" >
+                ca_service_center_name,
+            </if>
+            <if test="caAreaName != null" >
+                ca_area_name,
+            </if>
+            <if test="caRoomAddress != null" >
+                ca_room_address,
+            </if>
+            <if test="caCutVoucherNo != null" >
+                ca_cut_voucher_no,
+            </if>
+            <if test="caCreateTime != null" >
+                ca_create_time,
+            </if>
+            <if test="coId != null" >
+                co_id,
+            </if>
+            <if test="caCsaId != null" >
+                ca_csa_id,
+            </if>
+            <if test="caRecoverReason != null" >
+                ca_recover_reason,
+            </if>
+            <if test="caBimEndTime != null" >
+                ca_bim_end_time,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides="," >
+            <if test="caId != null" >
+                #{caId,jdbcType=INTEGER},
+            </if>
+            <if test="pacId != null" >
+                #{pacId,jdbcType=INTEGER},
+            </if>
+            <if test="caCode != null" >
+                #{caCode,jdbcType=VARCHAR},
+            </if>
+            <if test="caCutId != null" >
+                #{caCutId,jdbcType=INTEGER},
+            </if>
+            <if test="caUserId != null" >
+                #{caUserId,jdbcType=INTEGER},
+            </if>
+            <if test="caColor != null" >
+                #{caColor,jdbcType=VARCHAR},
+            </if>
+            <if test="caState != null" >
+                #{caState,jdbcType=INTEGER},
+            </if>
+            <if test="caType != null" >
+                #{caType,jdbcType=INTEGER},
+            </if>
+            <if test="caUseTime != null" >
+                #{caUseTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="caBimId != null" >
+                #{caBimId,jdbcType=VARCHAR},
+            </if>
+            <if test="caEstimateCost != null" >
+                #{caEstimateCost,jdbcType=DECIMAL},
+            </if>
+            <if test="caActualCost != null" >
+                #{caActualCost,jdbcType=DECIMAL},
+            </if>
+            <if test="caIsDonation != null" >
+                #{caIsDonation,jdbcType=INTEGER},
+            </if>
+            <if test="caIssuperposition != null" >
+                #{caIssuperposition,jdbcType=INTEGER},
+            </if>
+            <if test="caStartTime != null" >
+                #{caStartTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="caEndTime != null" >
+                #{caEndTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="ecId != null" >
+                #{ecId,jdbcType=INTEGER},
+            </if>
+            <if test="caVoucherType != null" >
+                #{caVoucherType,jdbcType=VARCHAR},
+            </if>
+            <if test="caVersion != null" >
+                #{caVersion,jdbcType=INTEGER},
+            </if>
+            <if test="caResource != null" >
+                #{caResource,jdbcType=INTEGER},
+            </if>
+            <if test="caCostMarketPercentage != null" >
+                #{caCostMarketPercentage,jdbcType=DECIMAL},
+            </if>
+            <if test="caCostServicecenterPercentage != null" >
+                #{caCostServicecenterPercentage,jdbcType=DECIMAL},
+            </if>
+            <if test="caCostMarket != null" >
+                #{caCostMarket,jdbcType=DECIMAL},
+            </if>
+            <if test="caCostServicecenter != null" >
+                #{caCostServicecenter,jdbcType=DECIMAL},
+            </if>
+            <if test="caRomId != null" >
+                #{caRomId,jdbcType=INTEGER},
+            </if>
+            <if test="caServicecenterId != null" >
+                #{caServicecenterId,jdbcType=INTEGER},
+            </if>
+            <if test="caIsRecover != null" >
+                #{caIsRecover,jdbcType=INTEGER},
+            </if>
+            <if test="caRecoverMonth != null" >
+                #{caRecoverMonth,jdbcType=INTEGER},
+            </if>
+            <if test="caUpdateTime != null" >
+                #{caUpdateTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="caDelayday != null" >
+                #{caDelayday,jdbcType=INTEGER},
+            </if>
+            <if test="caReceiveMobile != null" >
+                #{caReceiveMobile,jdbcType=VARCHAR},
+            </if>
+            <if test="caReceiveTime != null" >
+                #{caReceiveTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="caShareAmount != null" >
+                #{caShareAmount,jdbcType=DECIMAL},
+            </if>
+            <if test="stId != null" >
+                #{stId,jdbcType=INTEGER},
+            </if>
+            <if test="stGroup != null" >
+                #{stGroup,jdbcType=INTEGER},
+            </if>
+            <if test="caCutName != null" >
+                #{caCutName,jdbcType=NVARCHAR},
+            </if>
+            <if test="caRules != null" >
+                #{caRules,jdbcType=VARCHAR},
+            </if>
+            <if test="caServiceCenterName != null" >
+                #{caServiceCenterName,jdbcType=NVARCHAR},
+            </if>
+            <if test="caAreaName != null" >
+                #{caAreaName,jdbcType=NVARCHAR},
+            </if>
+            <if test="caRoomAddress != null" >
+                #{caRoomAddress,jdbcType=NVARCHAR},
+            </if>
+            <if test="caCutVoucherNo != null" >
+                #{caCutVoucherNo,jdbcType=NVARCHAR},
+            </if>
+            <if test="caCreateTime != null" >
+                #{caCreateTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="coId != null" >
+                #{coId,jdbcType=INTEGER},
+            </if>
+            <if test="caCsaId != null" >
+                #{caCsaId,jdbcType=INTEGER},
+            </if>
+            <if test="caRecoverReason != null" >
+                #{caRecoverReason,jdbcType=VARCHAR},
+            </if>
+            <if test="caBimEndTime != null" >
+                #{caBimEndTime,jdbcType=TIMESTAMP},
+            </if>
+        </trim>
+    </insert>
+
+    <update id="updateByPrimaryKeySelective" parameterType="com.qk365.coupons.entity.oa.CouponsActivities" >
+        update Coupons_Activities
+        <set >
+            <if test="pacId != null" >
+                pac_id = #{pacId,jdbcType=INTEGER},
+            </if>
+            <if test="caCode != null" >
+                ca_code = #{caCode,jdbcType=VARCHAR},
+            </if>
+            <if test="caCutId != null" >
+                ca_cut_id = #{caCutId,jdbcType=INTEGER},
+            </if>
+            <if test="caUserId != null" >
+                ca_user_id = #{caUserId,jdbcType=INTEGER},
+            </if>
+            <if test="caColor != null" >
+                ca_color = #{caColor,jdbcType=VARCHAR},
+            </if>
+            <if test="caState != null" >
+                ca_state = #{caState,jdbcType=INTEGER},
+            </if>
+            <if test="caType != null" >
+                ca_type = #{caType,jdbcType=INTEGER},
+            </if>
+            <if test="caUseTime != null" >
+                ca_use_time = #{caUseTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="caBimId != null" >
+                ca_bim_id = #{caBimId,jdbcType=VARCHAR},
+            </if>
+            <if test="caEstimateCost != null" >
+                ca_estimate_Cost = #{caEstimateCost,jdbcType=DECIMAL},
+            </if>
+            <if test="caActualCost != null" >
+                ca_actual_Cost = #{caActualCost,jdbcType=DECIMAL},
+            </if>
+            <if test="caIsDonation != null" >
+                ca_is_Donation = #{caIsDonation,jdbcType=INTEGER},
+            </if>
+            <if test="caIssuperposition != null" >
+                ca_isSuperposition = #{caIssuperposition,jdbcType=INTEGER},
+            </if>
+            <if test="caStartTime != null" >
+                ca_start_time = #{caStartTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="caEndTime != null" >
+                ca_end_time = #{caEndTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="ecId != null" >
+                ec_id = #{ecId,jdbcType=INTEGER},
+            </if>
+            <if test="caVoucherType != null" >
+                ca_voucher_type = #{caVoucherType,jdbcType=VARCHAR},
+            </if>
+            <if test="caVersion != null" >
+                ca_version = #{caVersion,jdbcType=INTEGER},
+            </if>
+            <if test="caResource != null" >
+                ca_resource = #{caResource,jdbcType=INTEGER},
+            </if>
+            <if test="caCostMarketPercentage != null" >
+                ca_cost_market_percentage = #{caCostMarketPercentage,jdbcType=DECIMAL},
+            </if>
+            <if test="caCostServicecenterPercentage != null" >
+                ca_cost_serviceCenter_percentage = #{caCostServicecenterPercentage,jdbcType=DECIMAL},
+            </if>
+            <if test="caCostMarket != null" >
+                ca_cost_market = #{caCostMarket,jdbcType=DECIMAL},
+            </if>
+            <if test="caCostServicecenter != null" >
+                ca_cost_serviceCenter = #{caCostServicecenter,jdbcType=DECIMAL},
+            </if>
+            <if test="caRomId != null" >
+                ca_rom_id = #{caRomId,jdbcType=INTEGER},
+            </if>
+            <if test="caServicecenterId != null" >
+                ca_serviceCenter_Id = #{caServicecenterId,jdbcType=INTEGER},
+            </if>
+            <if test="caIsRecover != null" >
+                ca_is_recover = #{caIsRecover,jdbcType=INTEGER},
+            </if>
+            <if test="caRecoverMonth != null" >
+                ca_recover_month = #{caRecoverMonth,jdbcType=INTEGER},
+            </if>
+            <if test="caUpdateTime != null" >
+                ca_update_time = #{caUpdateTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="caDelayday != null" >
+                ca_delayDay = #{caDelayday,jdbcType=INTEGER},
+            </if>
+            <if test="caReceiveMobile != null" >
+                ca_receive_mobile = #{caReceiveMobile,jdbcType=VARCHAR},
+            </if>
+            <if test="caReceiveTime != null" >
+                ca_receive_time = #{caReceiveTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="caShareAmount != null" >
+                ca_share_amount = #{caShareAmount,jdbcType=DECIMAL},
+            </if>
+            <if test="stId != null" >
+                st_id = #{stId,jdbcType=INTEGER},
+            </if>
+            <if test="stGroup != null" >
+                st_group = #{stGroup,jdbcType=INTEGER},
+            </if>
+            <if test="caCutName != null" >
+                ca_cut_name = #{caCutName,jdbcType=NVARCHAR},
+            </if>
+            <if test="caRules != null" >
+                ca_rules = #{caRules,jdbcType=VARCHAR},
+            </if>
+            <if test="caServiceCenterName != null" >
+                ca_service_center_name = #{caServiceCenterName,jdbcType=NVARCHAR},
+            </if>
+            <if test="caAreaName != null" >
+                ca_area_name = #{caAreaName,jdbcType=NVARCHAR},
+            </if>
+            <if test="caRoomAddress != null" >
+                ca_room_address = #{caRoomAddress,jdbcType=NVARCHAR},
+            </if>
+            <if test="caCutVoucherNo != null" >
+                ca_cut_voucher_no = #{caCutVoucherNo,jdbcType=NVARCHAR},
+            </if>
+            <if test="caCreateTime != null" >
+                ca_create_time = #{caCreateTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="coId != null" >
+                co_id = #{coId,jdbcType=INTEGER},
+            </if>
+            <if test="caCsaId != null" >
+                ca_csa_id = #{caCsaId,jdbcType=INTEGER},
+            </if>
+            <if test="caRecoverReason != null" >
+                ca_recover_reason = #{caRecoverReason,jdbcType=VARCHAR},
+            </if>
+            <if test="caBimEndTime != null" >
+                ca_bim_end_time = #{caBimEndTime,jdbcType=TIMESTAMP},
+            </if>
+        </set>
+        where ca_id = #{caId,jdbcType=INTEGER}
+    </update>
+</mapper>

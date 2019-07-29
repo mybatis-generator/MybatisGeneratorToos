@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.qk365.fyff.dao.ecom.EsalesTppPushConfigDao" >
+
+    <resultMap id="BaseResultMap" type="com.qk365.fyff.entity.ecom.EsalesTppPushConfig" >
+        <id column="Id" property="id" jdbcType="INTEGER" />
+        <result column="ExternalType" property="externaltype" jdbcType="INTEGER" />
+        <result column="AdjustPrice" property="adjustprice" jdbcType="DECIMAL" />
+        <result column="AdditionalRemarks" property="additionalremarks" jdbcType="VARCHAR" />
+        <result column="CreateTime" property="createtime" jdbcType="TIMESTAMP" />
+        <result column="UpdateTime" property="updatetime" jdbcType="TIMESTAMP" />
+        <result column="CreatorId" property="creatorid" jdbcType="BIGINT" />
+        <result column="UpdateId" property="updateid" jdbcType="BIGINT" />
+        <result column="IsDel" property="isdel" jdbcType="BIT" />
+        <result column="Ts" property="ts" jdbcType="BIGINT" />
+        <result column="Remarks" property="remarks" jdbcType="VARCHAR" />
+    </resultMap>
+
+    <sql id="Base_Column_List" >
+        Id, ExternalType, AdjustPrice, AdditionalRemarks, CreateTime, UpdateTime, CreatorId, 
+        UpdateId, IsDel, Ts, Remarks
+    </sql>
+
+    <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+        select 
+        <include refid="Base_Column_List" />
+        from esales_tpp_push_config
+        where Id = #{id,jdbcType=INTEGER}
+    </select>
+
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+        delete from esales_tpp_push_config
+        where Id = #{id,jdbcType=INTEGER}
+    </delete>
+
+    <insert id="insertSelective" parameterType="com.qk365.fyff.entity.ecom.EsalesTppPushConfig" >
+        insert into esales_tpp_push_config
+        <trim prefix="(" suffix=")" suffixOverrides="," >
+            <if test="id != null" >
+                Id,
+            </if>
+            <if test="externaltype != null" >
+                ExternalType,
+            </if>
+            <if test="adjustprice != null" >
+                AdjustPrice,
+            </if>
+            <if test="additionalremarks != null" >
+                AdditionalRemarks,
+            </if>
+            <if test="createtime != null" >
+                CreateTime,
+            </if>
+            <if test="updatetime != null" >
+                UpdateTime,
+            </if>
+            <if test="creatorid != null" >
+                CreatorId,
+            </if>
+            <if test="updateid != null" >
+                UpdateId,
+            </if>
+            <if test="isdel != null" >
+                IsDel,
+            </if>
+            <if test="ts != null" >
+                Ts,
+            </if>
+            <if test="remarks != null" >
+                Remarks,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides="," >
+            <if test="id != null" >
+                #{id,jdbcType=INTEGER},
+            </if>
+            <if test="externaltype != null" >
+                #{externaltype,jdbcType=INTEGER},
+            </if>
+            <if test="adjustprice != null" >
+                #{adjustprice,jdbcType=DECIMAL},
+            </if>
+            <if test="additionalremarks != null" >
+                #{additionalremarks,jdbcType=VARCHAR},
+            </if>
+            <if test="createtime != null" >
+                #{createtime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="updatetime != null" >
+                #{updatetime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="creatorid != null" >
+                #{creatorid,jdbcType=BIGINT},
+            </if>
+            <if test="updateid != null" >
+                #{updateid,jdbcType=BIGINT},
+            </if>
+            <if test="isdel != null" >
+                #{isdel,jdbcType=BIT},
+            </if>
+            <if test="ts != null" >
+                #{ts,jdbcType=BIGINT},
+            </if>
+            <if test="remarks != null" >
+                #{remarks,jdbcType=VARCHAR},
+            </if>
+        </trim>
+    </insert>
+
+    <update id="updateByPrimaryKeySelective" parameterType="com.qk365.fyff.entity.ecom.EsalesTppPushConfig" >
+        update esales_tpp_push_config
+        <set >
+            <if test="externaltype != null" >
+                ExternalType = #{externaltype,jdbcType=INTEGER},
+            </if>
+            <if test="adjustprice != null" >
+                AdjustPrice = #{adjustprice,jdbcType=DECIMAL},
+            </if>
+            <if test="additionalremarks != null" >
+                AdditionalRemarks = #{additionalremarks,jdbcType=VARCHAR},
+            </if>
+            <if test="createtime != null" >
+                CreateTime = #{createtime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="updatetime != null" >
+                UpdateTime = #{updatetime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="creatorid != null" >
+                CreatorId = #{creatorid,jdbcType=BIGINT},
+            </if>
+            <if test="updateid != null" >
+                UpdateId = #{updateid,jdbcType=BIGINT},
+            </if>
+            <if test="isdel != null" >
+                IsDel = #{isdel,jdbcType=BIT},
+            </if>
+            <if test="ts != null" >
+                Ts = #{ts,jdbcType=BIGINT},
+            </if>
+            <if test="remarks != null" >
+                Remarks = #{remarks,jdbcType=VARCHAR},
+            </if>
+        </set>
+        where Id = #{id,jdbcType=INTEGER}
+    </update>
+</mapper>
